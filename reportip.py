@@ -17,11 +17,11 @@ import urllib2
 
 # the e-mail config
 # this is just a simple format,this e-mail doesn't exist.
-smtpserver = "smtp.sina.com"
-username = "reaspberrypi@sina.com"
+smtpserver = "smtp.163.com"
+username = "reaspberrypi@163.com"
 password = "123456"
-sender = "reaspberrypi@sina.com"
-receiver = ["receiver@sina.com","master@sina.com"]
+sender = "reaspberrypi@163.com"
+receiver = ["receiver@163.com","master@gmail.com"]
 subject = "[RPI]IP CHANGED"
 
 # file_path config
@@ -34,8 +34,9 @@ def sendEmail(msghtml):
     msgRoot['Subject'] =  subject
     msgText = MIMEText(msghtml,'html','utf-8')
     msgRoot.attach(msgText)
-    smtp = smtplib.SMTP()
-    smtp.connect(smtpserver)
+    #smtp = smtplib.SMTP()
+    #smtp.connect(smtpserver)
+    smtp = smtplib.SMTP_SSL('smtp.163.com', 465)
     smtp.login(username, password)
     smtp.sendmail(sender, receiver, msgRoot.as_string())
     smtp.quit()
