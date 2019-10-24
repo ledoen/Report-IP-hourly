@@ -63,7 +63,7 @@ def get_lan_ip():
 class Getmyip:
     def getip(self):
         try:
-            myip = self.visit("http://1111.ip138.com/ic.asp")
+            myip = self.visit("https://httpbin.org/ip")
         except:
             try:
                 myip = self.visit("http://ip.chinaz.com/")
